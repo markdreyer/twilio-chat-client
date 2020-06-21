@@ -33,9 +33,9 @@ class ChatApp extends React.Component {
     };
   }
 
-  componentWillMount = () => {
+  componentWillMount = async () => {
     if (this.state.loggedIn) {
-      this.getToken();
+      await this.getToken();
       this.setState({ statusString: "Fetching credentials…" });
     }
   };
@@ -66,10 +66,22 @@ class ChatApp extends React.Component {
     this.chatClient.shutdown();
   };
 
-  getToken = () => {
+  getToken = async () => {
     // Paste your unique Chat token function
     const myToken =
-      "<access token>";
+      await fetch(`/token/mark`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ identity: 'mark' })
+
+      })
+        .then(response => response.json())
+        .then(data => {
+          return data.token
+        })
+
     this.setState({ token: myToken }, this.initChat);
   };
 
