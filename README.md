@@ -1,10 +1,10 @@
-# The Demo Conversations App
+# SMS Conversations App
 
 This is a lightweight application based on [Twilio Chat](https://www.twilio.com/docs/chat).
 
 # Configuring and getting started
 
-This demo requires a Twilio account and a working Chat Service SID.
+The app requires a Twilio account and a working Chat Service SID.
 You'll need to collect some credentials from the [Twilio Console](https://www.twilio.com/console):
 * Your Account SID (`ACXXX`) and Auth Token, both accessible from the [Dashboard](https://twilio.com/console/dashboard)
 * Your Account's Chat Service Sid `ISXXX` SID which is attached to your Chat Service
@@ -12,7 +12,6 @@ You'll need to collect some credentials from the [Twilio Console](https://www.tw
 # Testing
 
 The demo application can be configured and run in two ways:
-* Forking [the demo-chat-application on CodeSandbox.io](https://codesandbox.io/s/github/TwilioDevEd/conversations-demo) (recommended)
 * Cloning this repo and running locally
 
 # Replacing the Chat Token
