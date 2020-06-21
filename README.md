@@ -1,12 +1,12 @@
-# SMS Conversations Client
+# Twilio Conversations Client
 
-The app allows you to view your Twilio SMS conversations on the web. Any conversation created with the [Twilio Conversations API](https://www.twilio.com/docs/conversations/api) is supported.
+View your Chat, SMS, and WhatsApp conversations on the web. Any conversation created with the [Twilio Conversations API](https://www.twilio.com/docs/conversations/api) is supported.
 * Based the [Twilio Conversations QuickStart](https://www.twilio.com/docs/conversations/quickstart)
 * Also, based on [Twilio Chat](https://www.twilio.com/docs/chat)
 
 # Configuring and getting started
 
-The app requires a Twilio account and a working Chat Service SID.
+The app requires a Twilio account and a working Chat Service SID. You'll also want to buy an SMS number to interact with real SMS.
 You'll need to collect some credentials from the [Twilio Console](https://www.twilio.com/console):
 * Your Account SID (`ACXXX`) and Auth Token, both accessible from the [Dashboard](https://twilio.com/console/dashboard)
 * Your Account's Chat Service Sid `ISXXX` SID which is attached to your Chat Service
