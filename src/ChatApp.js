@@ -1,5 +1,5 @@
 import React from "react";
-import { Badge, Icon, Layout, Spin, Typography } from "antd";
+import { Badge, Icon, Layout, Typography } from "antd";
 import { Client as ChatClient } from "twilio-chat";
 
 import "./assets/Chat.css";

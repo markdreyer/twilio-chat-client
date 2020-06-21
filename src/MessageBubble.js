@@ -1,7 +1,7 @@
-import React, {Component, PureComponent} from 'react';
+import React, { Component, PureComponent } from 'react';
 import styles from './assets/MessageBubble.module.css';
 import PropTypes from "prop-types";
-import {Spin, Modal, Icon} from "antd";
+import { Spin, Modal, Icon } from "antd";
 import WhatsappIcon from "./WhatsappIcon";
 import ChatIcon from "./ChatIcon";
 
@@ -24,21 +24,21 @@ class MessageBubble extends Component {
         if (this.state.hasMedia) {
             console.log("Getting URL?!");
             this.props.message.media.getContentUrl()
-                .then(url => {console.log("HUZZAA"); this.setState({ mediaUrl: url })})
+                .then(url => { console.log("HUZZAA"); this.setState({ mediaUrl: url }) })
                 .catch(e => this.setState({ mediaDownloadFailed: true }));
         }
-        document.getElementById(this.props.message.sid).scrollIntoView({behavior: "smooth"});
+        document.getElementById(this.props.message.sid).scrollIntoView({ behavior: "smooth" });
     };
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        document.getElementById(this.props.message.sid).scrollIntoView({behavior: "smooth"});
+        document.getElementById(this.props.message.sid).scrollIntoView({ behavior: "smooth" });
     }
 
     render = () => {
-        const {itemStyle, divStyle} = this.props.direction === "incoming"
-                    ? {itemStyle: styles.received_msg,    divStyle: styles.received_withd_msg}
-                    : {itemStyle: styles.outgoing_msg, divStyle: styles.sent_msg          }; 
-        
+        const { itemStyle, divStyle } = this.props.direction === "incoming"
+            ? { itemStyle: styles.received_msg, divStyle: styles.received_withd_msg }
+            : { itemStyle: styles.outgoing_msg, divStyle: styles.sent_msg };
+
         const m = this.props.message;
         const type = this.state.type;
 
@@ -46,7 +46,7 @@ class MessageBubble extends Component {
             console.log('Message is media message');
             // log media properties
             console.log('Media properties', m.media);
-          }
+        }
 
         return <li id={m.sid} className={itemStyle}>
             <div className={divStyle}>
@@ -54,20 +54,20 @@ class MessageBubble extends Component {
                     <strong>
                         {type === "whatsapp" &&
                             <Icon
-                                style={{fontSize: "16px"}}
-                                component={WhatsappIcon}/>
+                                style={{ fontSize: "16px" }}
+                                component={WhatsappIcon} />
                         }
                         {type === "chat" &&
-                            <Icon style={{fontSize: "16px"}}
-                                  component={ChatIcon}/>}
-                        {type === "sms" && <Icon type={"mobile"}/>}
+                            <Icon style={{ fontSize: "16px" }}
+                                component={ChatIcon} />}
+                        {type === "sms" && <Icon type={"mobile"} />}
                         {` ${m.author}`}
                     </strong>
 
                     <br />
                     <div className={styles.medias}>
-                    {this.state.hasMedia
-                      && <Media hasFailed={this.state.mediaDownloadFailed} url={this.state.mediaUrl} />}
+                        {this.state.hasMedia
+                            && <Media hasFailed={this.state.mediaDownloadFailed} url={this.state.mediaUrl} />}
                     </div>
                     {m.body}
                 </div>
@@ -91,32 +91,32 @@ class Media extends PureComponent {
                         width: "60%",
                         content: <div
                             className={styles.picture_container}>
-                            <img style={{width: "100%", height: "100%"}} src={url}/>
+                            <img style={{ width: "100%", height: "100%" }} src={url} alt='' />
                         </div>
                     })
                 }}>
 
-                {!url && !hasFailed && <Spin/>}
+                {!url && !hasFailed && <Spin />}
 
                 {hasFailed &&
                     <div
-                        style={{display: "flex", flexDirection: "column"}}>
-                        <Icon type={"warning"} style={{fontSize: "5em"}}/>
+                        style={{ display: "flex", flexDirection: "column" }}>
+                        <Icon type={"warning"} style={{ fontSize: "5em" }} />
                         <p>Failed to load media</p>
                     </div>
                 }
 
                 {!hasFailed && url &&
-                <div className={styles.media_icon}>
-                    <div style={{zIndex: 123, position: "absolute"}}>
-                        <Icon type={"eye"}
-                              style={{fontSize: "5em", opacity: 0.3}}/>
+                    <div className={styles.media_icon}>
+                        <div style={{ zIndex: 123, position: "absolute" }}>
+                            <Icon type={"eye"}
+                                style={{ fontSize: "5em", opacity: 0.3 }} />
+                        </div>
+                        <div
+                            className={styles.picture_preview}
+                            style={{ backgroundImage: `url(${url})`, zIndex: 122 }}>
+                        </div>
                     </div>
-                    <div
-                        className={styles.picture_preview}
-                        style={{backgroundImage: `url(${url})`, zIndex: 122}}>
-                    </div>
-                </div>
                 }
             </div>
         );
