@@ -1,6 +1,8 @@
-# SMS Conversations App
+# SMS Conversations Client
 
-This is a lightweight application based on [Twilio Chat](https://www.twilio.com/docs/chat).
+The app allows you to view your Twilio SMS conversations on the web. Any conversation created with the [Twilio Conversations API](https://www.twilio.com/docs/conversations/api) is supported.
+* Based the [Twilio Conversations QuickStart](https://www.twilio.com/docs/conversations/quickstart)
+* Also, based on [Twilio Chat](https://www.twilio.com/docs/chat)
 
 # Configuring and getting started
 
