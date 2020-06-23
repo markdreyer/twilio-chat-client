@@ -38,11 +38,12 @@ const LoginPage = ({ form, onSubmit }) => {
                     <Col span={12} offset={6}>
                         <Card style={{ maxWidth: '404px' }}>
                             <Row type="flex" justify="center" align="middle" style={{ marginBottom: '30px' }}>
-                                Welcome, {user || 'Guest'}
+                                Welcome, {user?.name || 'Guest'}
                             </Row>
 
                             <Form onSubmit={(e) => handleSubmit(e)}>
                                 <Form.Item>
+                                    <span>Chat as: </span>
                                     {usernameFieldDecorator(
                                         <Input
                                             prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
