@@ -4,7 +4,7 @@ import { List, Typography } from "antd";
 import chatChannelsListStyles from "./assets/ChatChannelsList.module.css";
 import chatChannelsItemStyles from "./assets/ChatChannelsItem.module.css";
 
-import { joinClassNames } from "./utils/class-name";
+import { joinClassNames } from "../utils/class-name";
 
 const { Text } = Typography;
 
