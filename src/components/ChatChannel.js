@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './assets/Chat.css';
+import '../assets/Chat.css';
 import Dropzone from 'react-dropzone';
-import styles from './assets/ChatChannel.module.css'
+import styles from '../assets/ChatChannel.module.css'
 import { Button, Form, Icon, Input } from "antd";
 import ChatMessages from "./ChatMessages";
 import PropTypes from "prop-types";

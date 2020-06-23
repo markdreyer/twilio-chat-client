@@ -2,9 +2,9 @@ import React from "react";
 import { Badge, Icon, Layout, Typography } from "antd";
 import { Client as ChatClient } from "twilio-chat";
 
-import "./assets/Chat.css";
-import "./assets/ChatChannelSection.css";
-import { ReactComponent as Logo } from "./assets/twilio-mark-red.svg";
+import "../assets/Chat.css";
+import "../assets/ChatChannelSection.css";
+import { ReactComponent as Logo } from "../assets/twilio-mark-red.svg";
 
 import ChatChannel from "./ChatChannel";
 import LoginPage from "./LoginPage";
@@ -13,6 +13,7 @@ import { HeaderItem } from "./HeaderItem";
 
 const { Content, Sider, Header } = Layout;
 const { Text } = Typography;
+
 
 class ChatApp extends React.Component {
   constructor(props) {

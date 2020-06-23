@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
-import ChatApp from './ChatApp';
+import ChatApp from './components/ChatApp';
 import './assets/App.css';
 import 'antd/dist/antd.css';
 
+import { useAuth0 } from "./providers/Auth0Provider";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {}
-  }
 
-  render() {
-    return <ChatApp />
+const App = () => {
+  const { loading } = useAuth0();
+
+  if (loading) {
+    return (
+      <div>Loading...</div>
+    );
   }
+  return <ChatApp />
 }
 
 export default App;
