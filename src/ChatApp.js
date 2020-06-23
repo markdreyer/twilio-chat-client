@@ -67,15 +67,12 @@ class ChatApp extends React.Component {
   };
 
   getToken = async () => {
-    // Paste your unique Chat token function
     const myToken =
-      await fetch(`/token/mark`, {
-        method: "POST",
+      await fetch(`http://localhost:8080/api/private`, {
+        method: "GET",
         headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ identity: 'mark' })
-
+          "Authorization": "Bearer <TODO>"
+        }
       })
         .then(response => response.json())
         .then(data => {
