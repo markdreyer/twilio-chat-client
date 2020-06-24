@@ -10,10 +10,11 @@ import ChatChannel from "./ChatChannel";
 import LoginPage from "./LoginPage";
 import { ChannelsList } from "./ChannelsList";
 import { HeaderItem } from "./HeaderItem";
+import { Auth0Context } from "../providers/Auth0Provider";
+import config from "../config";
 
 const { Content, Sider, Header } = Layout;
 const { Text } = Typography;
-
 
 class ChatApp extends React.Component {
   constructor(props) {
@@ -33,6 +34,8 @@ class ChatApp extends React.Component {
       newMessage: ""
     };
   }
+
+  static contextType = Auth0Context;
 
   componentWillMount = async () => {
     if (this.state.loggedIn) {
@@ -68,19 +71,19 @@ class ChatApp extends React.Component {
   };
 
   getToken = async () => {
-    const myToken =
-      await fetch(`http://localhost:8080/api/private`, {
-        method: "GET",
-        headers: {
-          "Authorization": "Bearer <TODO>"
-        }
-      })
-        .then(response => response.json())
-        .then(data => {
-          return data.token
-        })
+    const auth0Response = await this.context.getIdTokenClaims()
+    const bearerToken = auth0Response?.__raw;
 
-    this.setState({ token: myToken }, this.initChat);
+    const apiResponse = await fetch(config.urls.twilioAuthServer, {
+      method: "GET",
+      headers: {
+        "Authorization": `Bearer ${bearerToken}`
+      }
+    })
+      .then(response => response.json())
+
+
+    this.setState({ token: apiResponse.token }, this.initChat);
   };
 
   initChat = async () => {
