@@ -131,7 +131,7 @@ class ChatApp extends React.Component {
       channelContent = (
         <ChatChannel
           channelProxy={selectedChannel}
-          myIdentity={this.state.name}
+          myIdentity={this.context.user.email}
         />
       );
     } else if (status !== "success") {
