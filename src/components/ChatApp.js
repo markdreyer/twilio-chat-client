@@ -20,12 +20,7 @@ class ChatApp extends React.Component {
   constructor(props) {
     super(props);
 
-    const name = localStorage.getItem("name") || "";
-    const loggedIn = name !== "";
-
     this.state = {
-      name,
-      loggedIn,
       token: null,
       statusString: null,
       chatReady: false,
@@ -38,17 +33,14 @@ class ChatApp extends React.Component {
   static contextType = Auth0Context;
 
   componentWillMount = async () => {
-    if (this.state.loggedIn) {
-      await this.getToken();
+    if (this.context.isAuthenticated) {
       this.setState({ statusString: "Fetching credentials…" });
+      await this.getToken();
     }
   };
 
-  logIn = name => {
-    if (name !== "") {
-      localStorage.setItem("name", name);
-      this.setState({ name, loggedIn: true }, this.getToken);
-    }
+  logIn = () => {
+    this.context.loginWithPopup({}).then(this.getToken)
   };
 
   logOut = event => {
@@ -57,8 +49,6 @@ class ChatApp extends React.Component {
     }
 
     this.setState({
-      name: "",
-      loggedIn: false,
       token: "",
       chatReady: false,
       messages: [],
@@ -66,7 +56,7 @@ class ChatApp extends React.Component {
       channels: []
     });
 
-    localStorage.removeItem("name");
+    this.context.logout({ returnTo: window.location })
     this.chatClient.shutdown();
   };
 
@@ -150,7 +140,7 @@ class ChatApp extends React.Component {
       channelContent = "";
     }
 
-    if (this.state.loggedIn) {
+    if (this.context.isAuthenticated) {
       return (
         <div className="chat-window-wrapper">
           <Layout className="chat-window-container">
