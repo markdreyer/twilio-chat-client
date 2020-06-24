@@ -4,6 +4,8 @@ View your Chat, SMS, and WhatsApp conversations on the web. Any conversation cre
 * Based the [Twilio Conversations QuickStart](https://www.twilio.com/docs/conversations/quickstart)
 * Also, based on [Twilio Chat](https://www.twilio.com/docs/chat)
 
+![Chat Interface](screenshot.png?raw=true)
+
 # Configuring and getting started
 
 The app requires a Twilio account and a working Chat Service SID. You'll also want to buy an SMS number to interact with real SMS.
